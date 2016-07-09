@@ -9,20 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var courses_component_1 = require('./courses.component');
-var authors_component_1 = require('./authors.component');
-var AppComponent = (function () {
-    function AppComponent() {
+var authors_service_1 = require('./authors.service');
+var AuthorsComponent = (function () {
+    function AuthorsComponent(authorsService) {
+        this.title = "The title of authors page";
+        this.authors = authorsService.getAuthors();
     }
-    AppComponent = __decorate([
+    AuthorsComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n        <h1>My first app</h1>\n        <courses></courses>\n        <authors></authors>\n    ",
-            directives: [courses_component_1.CourseComponent, authors_component_1.AuthorsComponent],
+            selector: 'authors',
+            template: "\n        <h2>Authors</h2>\n        {{title}}\n        <ul>\n            <li *ngFor=\"let author of authors\">\n                {{author}}\n            </li>\n        </ul>\n    ",
+            providers: [authors_service_1.AuthorsService],
         }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+        __metadata('design:paramtypes', [authors_service_1.AuthorsService])
+    ], AuthorsComponent);
+    return AuthorsComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.AuthorsComponent = AuthorsComponent;
+//# sourceMappingURL=authors.component.js.map
